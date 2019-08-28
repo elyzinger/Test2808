@@ -25,10 +25,11 @@ namespace TEST2808
             InitializeComponent();
             this.DataContext = this;
         }
-
+        Targil1window2 window2 = new Targil1window2();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"button width is: {Width.Value.ToString()} button hight is:{Hight.Value.ToString()}");
+            window2.Show();
+            window2.INFORMATION.Text = ($"button width is: {Width.Value.ToString()} button hight is:{Hight.Value.ToString()}  how big is width : {Size1.Text.ToString()} how big is hight : {Size2.Text.ToString()}");
         }
     }
     

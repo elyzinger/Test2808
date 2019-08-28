@@ -6,24 +6,26 @@
         xmlns:local="clr-namespace:TEST2808"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600">
-
+    <Window.Resources>
+        <local:ValueConverterPrecentage x:Key="valueconverter"></local:ValueConverterPrecentage>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" Margin="131,43,110.333,151.667" HorizontalAlignment="Center" Width="352"  >
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
                 <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Height="43" Width="54"/>
-                <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="I love wpf" VerticalAlignment="Top" Width="120"/>
+                <TextBox Name="INFORMATION" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="I love wpf" VerticalAlignment="Top" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
                 <Label  Content="Width"/>
-                <Slider Name="Width" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Value="{Binding StartPoint}" Minimum="50" Maximum="100" Width="200" VerticalAlignment="Top"/>
+                <Slider Name="Width" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Value="{Binding StartPoint}" Minimum="20" Maximum="100" Width="200" VerticalAlignment="Top"/>
                 <Label Name="Value" Content="{Binding ElementName=Width, Path=Value}"/>
-                <TextBlock Name="Size1" />
+                <TextBlock Name="Size1" Text="{Binding ElementName=Value, Path=Content, Converter={StaticResource valueconverter}}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
                 <Label  Content="Hight"/>
-                <Slider HorizontalAlignment="Left" IsSnapToTickEnabled="True" Minimum="50" Maximum="100" Name="Hight" Width="200" VerticalAlignment="Top"/>
+                <Slider HorizontalAlignment="Left" IsSnapToTickEnabled="True" Minimum="20" Maximum="100" Name="Hight" Width="200" VerticalAlignment="Top"/>
                 <Label Name="Value2"  Content="{Binding ElementName=Hight, Path=Value }"/>
-                <TextBlock Name="Size2" />
+                <TextBlock Name="Size2" Text="{Binding ElementName=Value2, Path=Content, Converter={StaticResource valueconverter}}" />
             </StackPanel>
 
         </StackPanel>
